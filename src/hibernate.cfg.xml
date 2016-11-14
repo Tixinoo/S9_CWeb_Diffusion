@@ -13,5 +13,6 @@
     <!-- Mapping files -->
     <mapping resource="entity/abonne.hbm.xml"/>
     <mapping resource="entity/message.hbm.xml"/>
+    <mapping resource="entity/annuaire.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
