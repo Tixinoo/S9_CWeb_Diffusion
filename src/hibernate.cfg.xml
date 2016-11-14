@@ -12,5 +12,6 @@
     <property name="hbm2ddl.auto">create</property>
     <!-- Mapping files -->
     <mapping resource="entity/abonne.hbm.xml"/>
+    <mapping resource="entity/message.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
