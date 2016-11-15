@@ -16,16 +16,20 @@ public class Main {
         Transaction tx = session.beginTransaction();
 
         Annuaire blagueurs = new Annuaire("blagueurs");
-        Abonne toto = new Abonne("toto", "titi");
+        session.save(blagueurs);
+        
         Entreprise bibal = new Entreprise("Bibal");
         Particulier raymond = new Particulier("pointcarre", "raymond");
-        Message blague = new Message("bonne blague", "toto, as-tu pris une douche ce matin ?");
-        
-        session.save(blagueurs);
-        session.save(toto);
         session.save(bibal);
         session.save(raymond);
+        
+        Message blague = new Message("bonne blague", "toto, as-tu pris une douche ce matin ?");
         session.save(blague);
+        
+        Abonne toto = new Abonne("toto", "titi");
+        session.save(toto);
+        
+        blague.setExpediteur(toto);
 
         tx.commit();
 

@@ -45,5 +45,9 @@ Contributor(s):
   <class name="entity.Abonne" table="abonne">
     <id column="login" name="login"></id>
     <property name="mdp"/>
+    <set name="messagesEnvoyes" inverse="true" >
+      <key column="idAbonne"/>
+      <one-to-many class="entity.Message" />
+    </set>
   </class>
 </hibernate-mapping>

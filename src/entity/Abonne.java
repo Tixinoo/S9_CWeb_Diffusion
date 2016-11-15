@@ -1,6 +1,8 @@
 package entity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  *
@@ -13,6 +15,7 @@ public class Abonne {
 
     private String login;
     private String mdp;
+    private Set<Message> messagesEnvoyes = new HashSet<>();
 
     public Abonne(String login, String mdp) {
         this.login = login;
@@ -22,8 +25,9 @@ public class Abonne {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.login);
-        hash = 59 * hash + Objects.hashCode(this.mdp);
+        hash = 67 * hash + Objects.hashCode(this.login);
+        hash = 67 * hash + Objects.hashCode(this.mdp);
+        hash = 67 * hash + Objects.hashCode(this.messagesEnvoyes);
         return hash;
     }
 
@@ -45,6 +49,9 @@ public class Abonne {
         if (!Objects.equals(this.mdp, other.mdp)) {
             return false;
         }
+        if (!Objects.equals(this.messagesEnvoyes, other.messagesEnvoyes)) {
+            return false;
+        }
         return true;
     }
 
@@ -64,9 +71,17 @@ public class Abonne {
         this.mdp = mdp;
     }
 
+    public Set<Message> getMessagesEnvoyes() {
+        return messagesEnvoyes;
+    }
+
+    public void setMessagesEnvoyes(Set<Message> messagesEnvoyes) {
+        this.messagesEnvoyes = messagesEnvoyes;
+    }
+
     @Override
     public String toString() {
-        return "Abonne{" + "login=" + login + ", mdp=" + mdp + '}';
+        return "Abonne{" + "login=" + login + ", mdp=" + mdp + ", messagesEnvoyes=" + messagesEnvoyes + '}';
     }
     
 }

@@ -12,6 +12,7 @@ public class Message {
     private int idMessage;
     private String objet;
     private String corps;
+    private Abonne expediteur;
 
     public Message(String objet, String corps) {
         this.objet = objet;
@@ -21,9 +22,10 @@ public class Message {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + this.idMessage;
-        hash = 17 * hash + Objects.hashCode(this.objet);
-        hash = 17 * hash + Objects.hashCode(this.corps);
+        hash = 67 * hash + this.idMessage;
+        hash = 67 * hash + Objects.hashCode(this.objet);
+        hash = 67 * hash + Objects.hashCode(this.corps);
+        hash = 67 * hash + Objects.hashCode(this.expediteur);
         return hash;
     }
 
@@ -46,6 +48,9 @@ public class Message {
             return false;
         }
         if (!Objects.equals(this.corps, other.corps)) {
+            return false;
+        }
+        if (!Objects.equals(this.expediteur, other.expediteur)) {
             return false;
         }
         return true;
@@ -75,11 +80,17 @@ public class Message {
         this.corps = corps;
     }
 
-    @Override
-    public String toString() {
-        return "Message{" + "idMessage=" + idMessage + ", objet=" + objet + ", corps=" + corps + '}';
+    public Abonne getExpediteur() {
+        return expediteur;
     }
 
+    public void setExpediteur(Abonne expediteur) {
+        this.expediteur = expediteur;
+    }
 
+    @Override
+    public String toString() {
+        return "Message{" + "idMessage=" + idMessage + ", objet=" + objet + ", corps=" + corps + ", expediteur=" + expediteur + '}';
+    }
     
 }
