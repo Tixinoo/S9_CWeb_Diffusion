@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,6 +23,10 @@ public abstract class Abonne {
         this.mdp = mdp;
     }
 
+    public void addMessageEnvoye(Message message) {
+        this.messagesEnvoyes.add(message);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -81,7 +86,17 @@ public abstract class Abonne {
 
     @Override
     public String toString() {
-        return "Abonne{" + "login=" + login + ", mdp=" + mdp + ", messagesEnvoyes=" + messagesEnvoyes + '}';
+        return "Abonne{" + "login=" + login + ", mdp=" + mdp + ", messagesEnvoyes={"+ this.printMessagesEnvoyes() +"}";
+    }
+
+    private String printMessagesEnvoyes() {
+        String res = "";
+        Iterator<Message> iterator = this.messagesEnvoyes.iterator();
+        while(iterator.hasNext()) {
+            Message m = iterator.next();
+            res = res + "" + m.toString();
+        }
+        return res;
     }
     
 }

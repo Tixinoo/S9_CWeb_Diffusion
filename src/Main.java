@@ -1,9 +1,9 @@
 
-import entity.Abonne;
 import entity.Annuaire;
 import entity.Entreprise;
 import entity.Message;
 import entity.Particulier;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -27,12 +27,26 @@ public class Main {
         blagueurs.addAbonne(raymond);
         blagueurs.addAbonne(marie);
         
-        Message blague = new Message("bonne blague", "toto, as-tu pris une douche ce matin ?");
-        session.save(blague);
+        Message question = new Message("Bonne blague", "Un moniteur demande à Toto : 'As-tu pris une douche ce matin ?' A ton avis, que répond Toto ?");
+        session.save(question);
+        question.setExpediteur(raymond);
         
-        blague.setExpediteur(raymond);
+        Message reponsefausse = new Message("Re:Bonne blague", "je ne sais pas ?");
+        session.save(reponsefausse);
+        reponsefausse.setExpediteur(marie);
 
+        Message bonnereponse = new Message("Re:Re:Bonne blague", "Il répond : 'Pourquoi, il en manque une ?'");
+        session.save(bonnereponse);
+        bonnereponse.setExpediteur(raymond);
+        
         tx.commit();
+        
+        List<Message> messagesDeRaymond = session.createQuery("FROM Message WHERE idAbonne='"+raymond.getLogin()+"'").list();
+        System.out.println("----- Messages de Raymond :");
+        for(Message m : messagesDeRaymond) {
+            System.out.println(m);
+        }
+        System.out.println("-----");
 
         HibernateUtil.closeSession();
         HibernateUtil.getSessionFactory().close();

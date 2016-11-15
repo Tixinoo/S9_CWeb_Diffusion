@@ -86,11 +86,12 @@ public class Message {
 
     public void setExpediteur(Abonne expediteur) {
         this.expediteur = expediteur;
+        this.expediteur.addMessageEnvoye(this);
     }
 
     @Override
     public String toString() {
-        return "Message{" + "idMessage=" + idMessage + ", objet=" + objet + ", corps=" + corps + ", expediteur=" + expediteur + '}';
+        return "Message{\n" + "idMessage=" + idMessage + ", \nobjet=" + objet + ", \ncorps=" + corps + "\n}";
     }
-    
+
 }
