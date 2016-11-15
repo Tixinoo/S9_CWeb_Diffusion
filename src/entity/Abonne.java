@@ -2,6 +2,7 @@ package entity;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import org.hibernate.Session;
@@ -11,7 +12,7 @@ import util.HibernateUtil;
 /**
  *
  * Représente un abonné
- * 
+ *
  * @author Antoine NOSAL
  * @author Maxime BLAISE
  */
@@ -23,19 +24,26 @@ public class Abonne {
 
     public Abonne() {
     }
-    
+
     public Abonne(String login, String mdp) {
         this.login = login;
         this.mdp = mdp;
     }
-    
+
+    public boolean exists() {
+        Session session = HibernateUtil.currentSession();
+
+        List<Abonne> abonnes = session.createQuery("FROM Abonne WHERE login='" + this.login + "' AND mdp='" + this.mdp + "'").list();
+        return !abonnes.isEmpty();
+    }
+
     /**
      * Persistence de l'abonné avec Hibernate
      */
     public void save() {
         Session session = HibernateUtil.currentSession();
         Transaction tx = session.beginTransaction();
-        
+
         session.save(this);
         tx.commit();
     }
@@ -43,7 +51,7 @@ public class Abonne {
     public void addMessageEnvoye(Message message) {
         this.messagesEnvoyes.add(message);
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -103,17 +111,17 @@ public class Abonne {
 
     @Override
     public String toString() {
-        return "Abonne{" + "login=" + login + ", mdp=" + mdp + ", messagesEnvoyes={"+ this.printMessagesEnvoyes() +"}";
+        return "Abonne{" + "login=" + login + ", mdp=" + mdp + ", messagesEnvoyes={" + this.printMessagesEnvoyes() + "}";
     }
 
     private String printMessagesEnvoyes() {
         String res = "";
         Iterator<Message> iterator = this.messagesEnvoyes.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Message m = iterator.next();
             res = res + "" + m.toString();
         }
         return res;
     }
-    
+
 }
