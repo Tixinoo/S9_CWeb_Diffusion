@@ -17,7 +17,7 @@
         
         <form action="c_connexion.jsp">
             <p> Login : <input type="text" name="login" /></p>
-            <p> Password : <input type="text" name="mdp" /></p>
+            <p> Password : <input type="password" name="mdp" /></p>
             <input type="submit" value="Je m'identifie" />
         </form>
     </body>
