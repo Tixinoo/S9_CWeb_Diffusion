@@ -1,6 +1,10 @@
 package entity;
 
+import java.util.List;
 import java.util.Objects;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 /**
  *
@@ -14,11 +18,26 @@ public class Message {
     private String corps;
     private Abonne expediteur;
 
+    public Message() {}
+    
     public Message(String objet, String corps) {
         this.objet = objet;
         this.corps = corps;
     }
 
+    /*public void save() {
+        Session session = HibernateUtil.currentSession();
+        Transaction tx = session.beginTransaction();
+        session.save(this);
+        tx.commit();
+    }
+    
+    public static List<Message> getAll() {
+        Session session = HibernateUtil.currentSession();
+        List<Message> l = session.createQuery("FROM Message").list(); 
+        return l;
+    }*/
+    
     @Override
     public int hashCode() {
         int hash = 3;
@@ -86,7 +105,6 @@ public class Message {
 
     public void setExpediteur(Abonne expediteur) {
         this.expediteur = expediteur;
-        this.expediteur.addMessageEnvoye(this);
     }
 
     @Override
