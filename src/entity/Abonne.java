@@ -11,7 +11,7 @@ import java.util.Set;
  * @author Antoine NOSAL
  * @author Maxime BLAISE
  */
-public class Abonne {
+public abstract class Abonne {
 
     private String login;
     private String mdp;

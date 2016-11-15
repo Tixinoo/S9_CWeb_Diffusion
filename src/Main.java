@@ -18,18 +18,16 @@ public class Main {
         Annuaire blagueurs = new Annuaire("blagueurs");
         session.save(blagueurs);
         
-        Entreprise bibal = new Entreprise("Bibal");
-        Particulier raymond = new Particulier("pointcarre", "raymond");
-        session.save(bibal);
+        Entreprise raymond = new Entreprise("Bibal & Cie", "raymond", "XB2212");
         session.save(raymond);
+        
+        Particulier marie = new Particulier("Rouana", "Marie", "marie1u", "XB2213");
+        session.save(marie);
         
         Message blague = new Message("bonne blague", "toto, as-tu pris une douche ce matin ?");
         session.save(blague);
         
-        Abonne toto = new Abonne("toto", "titi");
-        session.save(toto);
-        
-        blague.setExpediteur(toto);
+        blague.setExpediteur(raymond);
 
         tx.commit();
 

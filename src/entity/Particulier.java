@@ -7,13 +7,14 @@ import java.util.Objects;
  * @author Antoine NOSAL
  * @author Maxime BLAISE
  */
-public class Particulier {
+public class Particulier extends Abonne {
 
     private int idParticulier;
     private String nom;
     private String prenom;
 
-    public Particulier(String nom, String prenom) {
+    public Particulier(String nom, String prenom, String login, String mdp) {
+        super(login, mdp);
         this.nom = nom;
         this.prenom = prenom;
     }

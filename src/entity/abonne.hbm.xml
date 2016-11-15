@@ -49,5 +49,16 @@ Contributor(s):
       <key column="idAbonne"/>
       <one-to-many class="entity.Message" />
     </set>
+    
+    <joined-subclass name="entity.Particulier" table="particulier">
+      <key column="login"/>
+      <property name="nom"/>
+      <property name="prenom"/>
+    </joined-subclass>
+    <joined-subclass name="entity.Entreprise" table="entreprise">
+      <key column="login"/>
+      <property name="raisonSociale"/>
+    </joined-subclass>
+    
   </class>
 </hibernate-mapping>

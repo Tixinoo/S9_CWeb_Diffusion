@@ -7,12 +7,13 @@ import java.util.Objects;
  * @author Antoine NOSAL
  * @author Maxime BLAISE
  */
-public class Entreprise {
+public class Entreprise extends Abonne {
 
     private String raisonSociale;
 
-    public Entreprise(String raison) {
-        this.raisonSociale = raison;
+    public Entreprise(String raisonSociale, String login, String mdp) {
+        super(login, mdp);
+        this.raisonSociale = raisonSociale;
     }
 
     @Override
