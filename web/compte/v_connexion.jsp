@@ -14,5 +14,11 @@
     </head>
     <body>
         <h1>Page de connexion</h1>
+        
+        <form action="c_connexion.jsp">
+            <p> Login : <input type="text" name="login" /></p>
+            <p> Password : <input type="text" name="mdp" /></p>
+            <input type="submit" value="Je m'identifie" />
+        </form>
     </body>
 </html>
