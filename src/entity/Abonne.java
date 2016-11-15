@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 /**
  *
@@ -12,15 +15,29 @@ import java.util.Set;
  * @author Antoine NOSAL
  * @author Maxime BLAISE
  */
-public abstract class Abonne {
+public class Abonne {
 
-    private String login;
-    private String mdp;
-    private Set<Message> messagesEnvoyes = new HashSet<>();
+    protected String login;
+    protected String mdp;
+    protected Set<Message> messagesEnvoyes = new HashSet<>();
 
+    public Abonne() {
+    }
+    
     public Abonne(String login, String mdp) {
         this.login = login;
         this.mdp = mdp;
+    }
+    
+    /**
+     * Persistence de l'abonné avec Hibernate
+     */
+    public void save() {
+        Session session = HibernateUtil.currentSession();
+        Transaction tx = session.beginTransaction();
+        
+        session.save(this);
+        tx.commit();
     }
 
     public void addMessageEnvoye(Message message) {
