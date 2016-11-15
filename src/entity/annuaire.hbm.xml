@@ -44,5 +44,9 @@ Contributor(s):
 <hibernate-mapping>
   <class name="entity.Annuaire" table="annuaire">
     <id column="nomAnnuaire" name="nomAnnuaire"></id>
+    <set name="abonnes" table="annuaireabonne">
+        <key column="nomAnnuaire"/>       
+        <many-to-many column="login" class="entity.Abonne"/>     
+    </set>
   </class>
 </hibernate-mapping>

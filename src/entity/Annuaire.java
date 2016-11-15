@@ -1,6 +1,8 @@
 package entity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  *
@@ -10,15 +12,21 @@ import java.util.Objects;
 public class Annuaire {
 
     private String nomAnnuaire;
+    private Set<Abonne> abonnes = new HashSet<>();
 
     public Annuaire(String nom) {
         this.nomAnnuaire = nom;
     }
 
+    public void addAbonne(Abonne abonne) {
+        this.abonnes.add(abonne);
+    }
+    
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.nomAnnuaire);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.nomAnnuaire);
+        hash = 67 * hash + Objects.hashCode(this.abonnes);
         return hash;
     }
 
@@ -34,7 +42,13 @@ public class Annuaire {
             return false;
         }
         final Annuaire other = (Annuaire) obj;
-        return Objects.equals(this.nomAnnuaire, other.nomAnnuaire);
+        if (!Objects.equals(this.nomAnnuaire, other.nomAnnuaire)) {
+            return false;
+        }
+        if (!Objects.equals(this.abonnes, other.abonnes)) {
+            return false;
+        }
+        return true;
     }
 
     public String getNomAnnuaire() {
@@ -43,6 +57,19 @@ public class Annuaire {
 
     public void setNomAnnuaire(String nomAnnuaire) {
         this.nomAnnuaire = nomAnnuaire;
+    }
+
+    public Set<Abonne> getAbonnes() {
+        return abonnes;
+    }
+
+    public void setAbonnes(Set<Abonne> abonnes) {
+        this.abonnes = abonnes;
+    }
+
+    @Override
+    public String toString() {
+        return "Annuaire{" + "nomAnnuaire=" + nomAnnuaire + ", abonnes=" + abonnes + '}';
     }
     
 }

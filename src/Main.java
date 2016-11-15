@@ -24,6 +24,9 @@ public class Main {
         Particulier marie = new Particulier("Rouana", "Marie", "marie1u", "XB2213");
         session.save(marie);
         
+        blagueurs.addAbonne(raymond);
+        blagueurs.addAbonne(marie);
+        
         Message blague = new Message("bonne blague", "toto, as-tu pris une douche ce matin ?");
         session.save(blague);
         
