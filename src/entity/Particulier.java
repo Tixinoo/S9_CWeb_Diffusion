@@ -81,6 +81,4 @@ public class Particulier extends Abonne {
         return "Message{" + "idMessage=" + idParticulier + ", objet=" + nom + ", corps=" + prenom + '}';
     }
 
-
-    
 }

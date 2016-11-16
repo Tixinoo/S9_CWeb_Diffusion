@@ -10,15 +10,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Diffusion - Inscription</title>
     </head>
     <body>
-        <h1>Page d'inscription</h1>
-        
+        <div style="text-align:center"><a style="text-decoration:none;" href="../index.html">← Accueil</a></div>
+        <hr>
+        <h1 style="text-align:center;">Inscription</h1>
         <form action="c_inscription.jsp">
-            <p> Login : <input type="text" name="login" /></p>
-            <p> Password : <input type="password" name="mdp" /></p>
-            <input type="submit" value="Je m'inscris" />
+            <table style="margin-left:auto;margin-right:auto;">
+                <tr>
+                    <td>Identifiant :</td>
+                    <td><input type="text" name="login" /></td>
+                </tr>
+                <tr>
+                    <td>Mot de passe : </td>
+                    <td><input type="password" name="mdp" /></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td colspan=2><input style="width:100%" type="submit" value="Je m'inscris" /></td>
+                </tr>
+            </table>
         </form>
     </body>
 </html>

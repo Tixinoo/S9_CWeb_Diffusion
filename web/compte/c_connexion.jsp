@@ -5,6 +5,9 @@
     Author     : Antoine NOSAL
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="entity.Abonne"%>
+<%@page import="org.hibernate.Transaction"%>
 <%@page import="entity.Message"%>
 <%@page import="java.util.List"%>
 <%@page import="util.HibernateUtil"%>
@@ -13,8 +16,18 @@
 
 <jsp:setProperty name="unAbon" property="*" />
 
+<%!
+    public boolean exists(Abonne unAbon) {
+        List<Abonne> abonnes = new ArrayList<Abonne>();
+        final Session s = HibernateUtil.currentSession();
+        abonnes = s.createQuery("FROM Abonne WHERE login='" + unAbon.getLogin() + "' AND mdp='" + unAbon.getMdp() + "'").list();   
+        HibernateUtil.closeSession();
+        return !abonnes.isEmpty();
+    }
+%>
+
 <%
-    if (!unAbon.exists()) {
+    if (!exists(unAbon)) {
         // Redirection vers la page de connexion
         pageContext.forward("v_connexion.jsp");
     } else {

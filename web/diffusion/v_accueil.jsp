@@ -11,25 +11,65 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="unAbon" scope="session" class="entity.Abonne"/>
+<%
+    pageContext.setAttribute("login", unAbon.getLogin());
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Espace de diffusion</title>
+        <title>Diffusion - Accueil</title>
     </head>
     <body>
-        <h1>Accueil</h1>
-        <h2>Liste des messages</h2>
-        <ul>
-            <c:forEach items="${messages}" var="message" >
-                <li><c:out value="${message.corps}"/></li>
-            </c:forEach>
-        </ul>
-        <h2>Envoyer un nouveau message</h2>
-        <form action="c_accueil_addmessage.jsp">
-            <p> Objet : <input type="text" name="objet" /></p>
-            <p> Corps : <input type="text" name="corps" /></p>
-            <input type="submit" value="Envoyer ce message" />
-        </form>
+        <div style="text-align:right">Connecté en tant que <b>${login}</b></div>
+        <hr>
+        <h1 style="text-align:center;">Accueil</h1>
+
+        <div style="width:20%;display:inline;float:left;">
+            <h2 style="text-align:center;">Diffuser un message</h2>
+            <div style="margin-top:-12px;margin-bottom:15px;width:75%;margin-left:auto;margin-right:auto;"><hr></div>
+            <form action="c_accueil_addmessage.jsp">
+                <table style="margin-left:auto;margin-right:auto;">
+                    <tr>
+                        <td>Objet :</td>
+                        <td><input type="text" name="objet" /></td>
+                    </tr>
+                    <tr>
+                        <td>Corps :</td>
+                        <td><input type="text" name="corps" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><input style="width:100%" type="submit" value="Envoyer ce message" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        
+        <div style="width:80%;display:inline;float:left;">
+            <h2 style="text-align:center;">Messages diffusés</h2>
+            <div style="margin-top:-12px;width:20%;margin-left:auto;margin-right:auto;"><hr></div>
+            <table style="width:80%;margin-left:auto;margin-right:auto;">
+                <c:forEach items="${messages}" var="message" >
+                    <tr>
+                        <td style="width:15%;">Expéditeur :</td>
+                        <td><c:out value="${message.expediteur.login}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Objet :</td>
+                        <td><c:out value="${message.objet}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Corps :</td>
+                        <td><c:out value="${message.corps}"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </body>
 </html>
