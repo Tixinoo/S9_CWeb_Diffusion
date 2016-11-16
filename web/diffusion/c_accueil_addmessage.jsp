@@ -15,19 +15,27 @@
 <jsp:setProperty name="unMessage" property="*" />
 
 <%
-    Session s = HibernateUtil.currentSession();
-    
-    // Sauvegarde du message dans la base
-    Transaction tx = s.beginTransaction();
-    unMessage.setExpediteur(unAbon);
-    s.save(unMessage);
-    tx.commit();
-
-    // Actualisation de la page
-    List<Message> messages = s.createQuery("FROM Message").list();
-    request.setAttribute("messages", messages);
+    final Session s = HibernateUtil.currentSession();
+    try {
+        final Transaction tx = s.beginTransaction();
+        try {
+            // The real work is here
+            unMessage.setExpediteur(unAbon);
+            s.save(unMessage);
+            List<Message> messages = s.createQuery("FROM Message").list();
+            request.setAttribute("messages", messages);
+            tx.commit();
+        } catch (Exception ex) {
+            // Log the exception here
+            tx.rollback();
+            throw ex;
+        }
+    } finally {
+        HibernateUtil.closeSession();
+    }
     RequestDispatcher rd = getServletContext().getRequestDispatcher(("/diffusion/v_accueil.jsp"));
     rd.forward(request, response);
+    
     //pageContext.forward("v_accueil.jsp");
     //response.sendRedirect("v_accueil.jsp");
 %>
