@@ -25,7 +25,7 @@
     <body>
         <div style="text-align:right">Connecté en tant que <b>${login}</b>
             <form method="link" action="c_deconnexion.jsp">
-                <input type="submit" value="logout"/>
+                <input type="submit" value="Déconnexion"/>
             </form>
         </div>
         <hr>

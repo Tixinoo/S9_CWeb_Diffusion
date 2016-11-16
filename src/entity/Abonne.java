@@ -30,24 +30,6 @@ public class Abonne {
         this.mdp = mdp;
     }
 
-    public boolean exists() {
-        Session session = HibernateUtil.currentSession();
-
-        List<Abonne> abonnes = session.createQuery("FROM Abonne WHERE login='" + this.login + "' AND mdp='" + this.mdp + "'").list();
-        return !abonnes.isEmpty();
-    }
-
-    /**
-     * Persistence de l'abonné avec Hibernate
-     */
-    public void save() {
-        Session session = HibernateUtil.currentSession();
-        Transaction tx = session.beginTransaction();
-
-        session.save(this);
-        tx.commit();
-    }
-
     public void addMessageEnvoye(Message message) {
         this.messagesEnvoyes.add(message);
     }

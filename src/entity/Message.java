@@ -24,19 +24,6 @@ public class Message {
         this.objet = objet;
         this.corps = corps;
     }
-
-    /*public void save() {
-        Session session = HibernateUtil.currentSession();
-        Transaction tx = session.beginTransaction();
-        session.save(this);
-        tx.commit();
-    }
-    
-    public static List<Message> getAll() {
-        Session session = HibernateUtil.currentSession();
-        List<Message> l = session.createQuery("FROM Message").list(); 
-        return l;
-    }*/
     
     @Override
     public int hashCode() {
