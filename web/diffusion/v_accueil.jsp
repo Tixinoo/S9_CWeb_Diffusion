@@ -23,7 +23,11 @@
         <title>Diffusion - Accueil</title>
     </head>
     <body>
-        <div style="text-align:right">Connecté en tant que <b>${login}</b></div>
+        <div style="text-align:right">Connecté en tant que <b>${login}</b>
+            <form method="link" action="c_deconnexion.jsp">
+                <input type="submit" value="logout"/>
+            </form>
+        </div>
         <hr>
         <h1 style="text-align:center;">Accueil</h1>
 
@@ -46,7 +50,7 @@
                 </table>
             </form>
         </div>
-        
+
         <div style="width:80%;display:inline;float:left;">
             <h2 style="text-align:center;">Messages diffusés</h2>
             <div style="margin-top:-12px;width:20%;margin-left:auto;margin-right:auto;"><hr></div>
