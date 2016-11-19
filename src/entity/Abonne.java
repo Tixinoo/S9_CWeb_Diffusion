@@ -26,6 +26,9 @@ public class Abonne {
         this.mdp = mdp;
     }
 
+    public String getType() {
+        return "Abonne";
+    }    
     public void addMessageEnvoye(Message message) {
         this.messagesEnvoyes.add(message);
     }

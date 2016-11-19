@@ -18,6 +18,10 @@ public class Entreprise extends Abonne {
         this.raisonSociale = raisonSociale;
     }
 
+    public String getType() {
+        return "Entreprise";
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;

@@ -19,7 +19,11 @@ public class Particulier extends Abonne {
         this.nom = nom;
         this.prenom = prenom;
     }
-
+    
+    public String getType() {
+        return "Particulier";
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;

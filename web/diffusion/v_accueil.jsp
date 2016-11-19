@@ -58,7 +58,9 @@
                 <c:forEach items="${messages}" var="message" >
                     <tr>
                         <td style="width:15%;">Expéditeur :</td>
-                        <td><c:out value="${message.expediteur.login}"/></td>
+                        <td>
+                            <c:out value="${message.expediteur.login}"/> 
+                        </td>
                     </tr>
                     <tr>
                         <td>Objet :</td>
