@@ -11,6 +11,8 @@ public class Entreprise extends Abonne {
 
     private String raisonSociale;
 
+    public Entreprise() {}
+    
     public Entreprise(String raisonSociale, String login, String mdp) {
         super(login, mdp);
         this.raisonSociale = raisonSociale;

@@ -9,10 +9,11 @@ import java.util.Objects;
  */
 public class Particulier extends Abonne {
 
-    private int idParticulier;
     private String nom;
     private String prenom;
 
+    public Particulier() {}
+    
     public Particulier(String nom, String prenom, String login, String mdp) {
         super(login, mdp);
         this.nom = nom;
@@ -22,7 +23,6 @@ public class Particulier extends Abonne {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + this.idParticulier;
         hash = 17 * hash + Objects.hashCode(this.nom);
         hash = 17 * hash + Objects.hashCode(this.prenom);
         return hash;
@@ -40,9 +40,6 @@ public class Particulier extends Abonne {
             return false;
         }
         final Particulier other = (Particulier) obj;
-        if (this.idParticulier != other.idParticulier) {
-            return false;
-        }
         if (!Objects.equals(this.nom, other.nom)) {
             return false;
         }
@@ -50,14 +47,6 @@ public class Particulier extends Abonne {
             return false;
         }
         return true;
-    }
-
-    public int getIdParticulier() {
-        return idParticulier;
-    }
-
-    public void setIdParticulier(int idParticulier) {
-        this.idParticulier = idParticulier;
     }
 
     public String getNom() {
@@ -78,7 +67,7 @@ public class Particulier extends Abonne {
 
     @Override
     public String toString() {
-        return "Message{" + "idMessage=" + idParticulier + ", objet=" + nom + ", corps=" + prenom + '}';
+        return "Particulier{" + "objet=" + nom + ", corps=" + prenom + '}';
     }
 
 }

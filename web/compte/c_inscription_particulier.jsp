@@ -8,7 +8,7 @@
 <%@page import="org.hibernate.Transaction"%>
 <%@page import="util.HibernateUtil"%>
 <%@page import="org.hibernate.Session"%>
-<jsp:useBean id="unAbon" scope="session" class="entity.Abonne"/>
+<jsp:useBean id="unAbon" scope="session" class="entity.Particulier"/>
 
 <jsp:setProperty name="unAbon" property="*" />
 
